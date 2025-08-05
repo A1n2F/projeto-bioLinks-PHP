@@ -1,51 +1,20 @@
 <x-layout.app>
-    <div>
-        {{ auth()->id() }}
+    <x-container>
+        <x-card title="Register">
+            <x-form :route="route('register')" post id="register-form">
+                <x-input name="name" placeholder="Name" value="{{ old('name') }}" />
+                <x-input name="email" placeholder="Email" value="{{ old('email') }}" />
+                <x-input name="email_confirmation" placeholder="Email Confirmation" />
+                <x-input name="password" type="password" placeholder="Password" />
+            </x-form>
 
-        <h1>REGISTER</h1>
+            <x-slot:actions>
+                <x-a :href="route('login')">Already have an account!</x-a>
 
-        @if ($message = session()->get('message'))
-            <div>{{ $message }}</div>
-        @endif
-
-
-        <form action="{{ route('register') }}" method="post">
-            @csrf
-
-            <div>
-                <input name="name" placeholder="Name" value="{{ old('name') }}" />
-                @error('name')
-                    <span>{{ $message }}</span>
-                @enderror
-            </div>
-
-                <br>  
-
-            <div>
-                <input name="email" placeholder="Email" value="{{ old('email') }}" />
-                @error('email')
-                    <span>{{ $message }}</span>
-                @enderror
-            </div>
-
-                <br>  
-            
-            <div>
-                <input name="email_confirmation" placeholder="Email Confirmation" />
-            </div>
-            
-                <br>   
-            
-            <div>
-                <input type="password" name="password" placeholder="Senha" />
-                @error('password')
-                    <span>{{ $message }}</span>
-                @enderror
-            </div>
-            
-                <br>
-
-            <button>Registrar</button>
-        </form>
-    </div>
+                <x-button type="submit" form="register-form">
+                    Register
+                </x-button>
+            </x-slot:actions>
+        </x-card>
+    </x-container>
 </x-layout.app>

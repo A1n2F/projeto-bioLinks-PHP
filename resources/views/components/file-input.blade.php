@@ -1,0 +1,1 @@
+<input type="file" {{ $attributes->class(['file-input bg-gray-400 w-full']) }} />

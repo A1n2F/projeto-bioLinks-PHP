@@ -1,13 +1,21 @@
 <x-layout.app>
     <x-container>
-        <div class="flex flex-col items-center space-y-2">
+        <div class="absolute top-30 left-100">
+            <x-button ghost :href="route('profile')">Update Profile</x-button>
+            <x-button ghost :href="route('links.create')">Create a new link</x-button>
+        </div>
+        <div class="absolute top-30 right-100">
+            <x-button ghost :href="route('logout')">Logout</x-button>
+        </div>
+
+        <div class="flex flex-col items-center space-y-2 w-2/3">
             <x-img src="/storage/{{ $user->photo }}" alt="Profile Picture" />
             <h2 class="text-2xl font-bold tracking-wider">{{ $user->name }}</h2> 
             <h3 class="opacity-80">{{ $user->description }}</h3>
 
-            <ul class="space-y-2">
+            <ul class="space-y-2 mt-5">
                 @foreach ($links as $link)
-                    <li class="w-3xs flex items-center gap-2">
+                    <li class="flex items-center justify-center gap-2 pr-16">
                         @unless($loop->first)
                             <x-form :route="route('links.up', $link)" patch>
                                 <x-button ghost>

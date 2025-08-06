@@ -11,7 +11,7 @@
 @endphp
 
 <{{ $tag }} {{ $href ? "href=$href" : '' }} {{ $attributes->class([
-    'btn btn-primary', 
+    'btn btn-primary py-6', 
     'btn-block' => $block,
     'btn-outline' => $outline,
     'btn-info' => $info,
